@@ -17,11 +17,22 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $request->validate([
-            'email' => 'required|string|email',
-            'password' => 'required|string',
-        ]);
-        $credentials = $request->only('email', 'password');
+        if($request->email){
+            $request->validate([
+                'email' => 'required|string|email',
+                'password' => 'required|string',
+            ]);
+            $credentials = $request->only('email', 'password');
+
+        } else if($request->username){
+            $request->validate([
+                'username' => 'required|string',
+                'password' => 'required|string',
+            ]);
+            $credentials = $request->only('username', 'password');
+
+        }
+
         $token = Auth::attempt($credentials);
         
         if (!$token) {
@@ -32,11 +43,11 @@ class AuthController extends Controller
 
         $user = Auth::user();
         return response()->json([
-            'user' => $user,
-            'authorization' => [
-                'token' => $token,
-                'type' => 'bearer',
-            ]
+            'name' => $user->name,
+            'username'=>$user->username,
+            'email'=>$user->email,
+            'token' => $token,
+            'type' => 'bearer'
         ]);
     }
 
