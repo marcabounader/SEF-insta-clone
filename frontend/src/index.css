@@ -17,7 +17,7 @@ html , body{
   height:100%;
 }
 
-#root, .container, .wrapper{
+#root, .form-container,.side-container, .wrapper{
   height:inherit;
 }
 
@@ -34,15 +34,26 @@ html , body{
   border-radius: 1px;
   border:1px solid grey;
 }
-.login-form button{
+.login-form .login-btn{
   background-color: rgba(0, 149, 246);
   border:none;
   padding:7px 16px;
   border-radius: 8px;
   color:white;
 }
+
+.login-form .register-btn{
+  background-color: rgba(0, 149, 246);
+  border:none;
+  margin:40px;
+  padding:7px 16px;
+  border-radius: 8px;
+  color:white;
+}
+
 .insta-logo{
   height: 175px;
+  width:auto;
 }
 
 .phone-image{
@@ -54,4 +65,36 @@ html , body{
   color:blue;
   cursor: pointer;
 
+}
+
+.nav-container{
+  display:flex;
+  flex-direction:column;
+  align-content: center;
+  border-right:1px solid black;
+  flex-basis:30%;
+}
+.nav-container ul{
+  padding:0px;
+
+}
+
+.nav-container a.active{
+  color: black;
+  font-weight: bold;
+  position:relative;
+}
+
+.nav-container li{
+  list-style: none;
+  text-align: left;
+  padding:10px;
+}
+.nav-container a{
+  text-decoration: none;
+}
+
+nav-container .insta-logo{
+  height: 175px;
+  width:auto;
 }
