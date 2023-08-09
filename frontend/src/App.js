@@ -11,7 +11,9 @@ function App() {
     <Routes>
       <Route path='/' element={<Login/>}/>
                 <Route path='register' element={<Register/>}/>  
-                <Route path='dashboard' element={<Dashboard/>}/>
+                <Route path='dashboard'>
+                    <Route index element={<Dashboard/>}/>
+                </Route>
                 <Route path='*' element={<h1>404 - Page does not exist</h1>}/>
     </Routes>
   </BrowserRouter>
