@@ -10,10 +10,9 @@
     padding:0px;
   
   }
-  
-  .nav-container a.active{
+
+  .nav-container a{
     color: black;
-    font-weight: bold;
     position:relative;
   }
   
