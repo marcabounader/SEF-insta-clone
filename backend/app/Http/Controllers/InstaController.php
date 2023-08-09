@@ -13,7 +13,7 @@ class InstaController extends Controller
 {
     public function getUser($search){
         try{
-            $users=User::select('id','name','username')->where('username','like','%'.$search.'%')->orWhere('name','like','%'.$search.'%')->get();
+            $users=User::select('id','name','username')->where([['username','like','%'.$search.'%'],['id','!=',Auth::id()]])->orWhere('name','like','%'.$search.'%')->get();
             return response()->json([
                 'status' => 'success',
                 'users' => $users
@@ -28,7 +28,14 @@ class InstaController extends Controller
 
     public function follow(Request $request){
         try{
+            if(Auth::id()==$request->following_id){
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'cannot follow yourself'
+                ]);
+            }
             $followings=Following::where([['follower_id','=',Auth::id()],['following_id','=',$request->following_id]])->first();
+
             if(!$followings==""){
                 $followings->delete();
                 return response()->json([
