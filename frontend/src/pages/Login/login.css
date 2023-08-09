@@ -1,0 +1,44 @@
+.form-container, .wrapper{
+    height:inherit;
+  }
+
+  .phone-image{
+    flex-basis: 380.32px;
+    height: 581.15px;
+  }
+  
+  .login span{
+    color:blue;
+    cursor: pointer;
+  
+  }
+
+  .login{
+    height: 581.15px;
+  }
+  .login > div{
+    border-radius: 1px;
+    border: 1px solid grey;
+    margin-bottom:10px;
+  }
+  .login-form *{
+    margin: 0 40px 6px;
+    border-radius: 1px;
+    border:1px solid grey;
+  }
+  .login-form .login-btn{
+    background-color: rgba(0, 149, 246);
+    border:none;
+    padding:7px 16px;
+    border-radius: 8px;
+    color:white;
+  }
+  
+  .login-form .register-btn{
+    background-color: rgba(0, 149, 246);
+    border:none;
+    margin:40px;
+    padding:7px 16px;
+    border-radius: 8px;
+    color:white;
+  }

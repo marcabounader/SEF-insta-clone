@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { ReactComponent as Logo } from '../../instagram-logo.svg'
-
+import './register.css'
 const Register = () => {
     const [data,setData]=useState({name:"",username:"",email:"",password:""});
     const {name,username,email,password}=data;
@@ -24,11 +24,10 @@ const Register = () => {
     }
     return ( 
     <div className="flex-row center align-center">
-        <div className="wrapper flex-row align-center">
-                <div className="login flex-col center">
+                <div className="register flex-col center">
                     <div className='flex-col'>
                         <Logo className="insta-logo" alt="insta logo"/>
-                        <div className=' login-form flex-col '>
+                        <div className=' register-form flex-col '>
                             <input type="text" id="email" value={email} placeholder="Email" onChange={handleDataChange}/>
                             <input type="text" id="name" value={name} placeholder="Full Name" onChange={handleDataChange}/>
                             <input type="text" id="username" value={username} placeholder="Username" onChange={handleDataChange}/>
@@ -36,8 +35,7 @@ const Register = () => {
                             <button className="register-btn" onClick={handleDataSubmit}>Sign up</button>
                         </div>
                     </div>
-                </div>
-        </div>
+            </div>
     </div> );
 }
  

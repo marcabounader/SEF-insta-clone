@@ -1,0 +1,32 @@
+
+.nav-container{
+    display:flex;
+    flex-direction:column;
+    align-content: center;
+    border-right:1px solid black;
+    height:inherit;
+  }
+  .nav-container ul{
+    padding:0px;
+  
+  }
+  
+  .nav-container a.active{
+    color: black;
+    font-weight: bold;
+    position:relative;
+  }
+  
+  .nav-container li{
+    list-style: none;
+    text-align: left;
+    padding:10px;
+  }
+  .nav-container a{
+    text-decoration: none;
+  }
+  
+  .nav-container .insta-logo{
+    height: 175px;
+    width:auto;
+  }

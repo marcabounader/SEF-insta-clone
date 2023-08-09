@@ -1,0 +1,39 @@
+.wrapper{
+    height:inherit;
+}
+
+.register span{
+    color:blue;
+    cursor: pointer;
+  
+  }
+
+  .register{
+    height: 581.15px;
+  }
+  .register > div{
+    border-radius: 1px;
+    border: 1px solid grey;
+    margin-bottom:10px;
+  }
+  .register-form *{
+    margin: 0 40px 6px;
+    border-radius: 1px;
+    border:1px solid grey;
+  }
+  .register-form .register-btn{
+    background-color: rgba(0, 149, 246);
+    border:none;
+    padding:7px 16px;
+    border-radius: 8px;
+    color:white;
+  }
+  
+  .register-form .register-btn{
+    background-color: rgba(0, 149, 246);
+    border:none;
+    margin:40px;
+    padding:7px 16px;
+    border-radius: 8px;
+    color:white;
+  }

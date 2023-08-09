@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { ReactComponent as Logo } from '../../instagram-logo.svg'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+import './login.css'
 const Login = () => {
     const [credentials,setCredentials]=useState({email:"",password:""});
     const {email,password}=credentials;
@@ -25,12 +25,12 @@ const Login = () => {
     }
     return ( 
     <div className="form-container flex-row center align-center">
-        <div className="wrapper flex-row center align-center">
+        <div className="wrapper flex-row">
                 <img className="phone-image" src="https://static.cdninstagram.com/images/instagram/xig/homepage/phones/home-phones-2x.png?__makehaste_cache_breaker=73SVAexZgBW" alt="insta app"></img>
-                <div className="login flex-col">
+                <div className="login flex-col center">
                     <div className='flex-col'>
                     <Logo className="insta-logo" alt="insta logo"/>
-                        <div className=' login-form flex-col '>
+                        <div className="login-form flex-col center">
                             <input type="text" id="email" value={email}placeholder="Email" onChange={handleCredChange}/>
                             <input type="password" id="password" value={password} placeholder="Password" onChange={handleCredChange}/>
                             <button className="login-button" onClick={handleCredSubmit}>Log in</button>

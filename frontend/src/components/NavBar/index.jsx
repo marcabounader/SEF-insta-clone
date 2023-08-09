@@ -1,11 +1,11 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { ReactComponent as Logo } from '../../instagram-logo.svg'
-
+import './nav.css'
 
 // import { ReactComponent as Brand } from '../../assets/icons/logo.svg'
 
-const NavBar = () => {
+const NavBar = ({handleOpenSearch}) => {
   return (
     <nav className="nav-container">
       <div>
@@ -17,7 +17,7 @@ const NavBar = () => {
           <NavLink to="/dashboard">Home</NavLink>
           </li>
           <li>
-          <NavLink to="/dashboard">Search</NavLink>
+          <NavLink onClick={handleOpenSearch}>Search</NavLink>
           </li>
         </ul>
       </div>

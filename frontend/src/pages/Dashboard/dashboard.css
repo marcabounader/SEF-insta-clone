@@ -1,0 +1,19 @@
+.dashboard-container{
+    height:inherit;
+}
+
+.side-container{
+    height:inherit;
+    width:auto;
+}
+
+.search-bar{
+    height:inherit;
+    width:20%;
+    z-index: 99;
+    border-right:1px solid black;
+
+}
+.user-card:hover{
+    background-color: azure;
+}
