@@ -7,13 +7,32 @@
     width:auto;
 }
 
+.post-container{
+    height:inherit;
+    margin:auto;
+}
+.post{
+    align-self:center;
+    margin:10px;
+}
+.post i{
+    cursor: pointer;
+}
 .search-bar{
     height:inherit;
-    width:20%;
+    width:auto;
     z-index: 99;
     border-right:1px solid black;
 
 }
+
+.user-card{
+    margin:10px;
+}
 .user-card:hover{
     background-color: azure;
+}
+
+.user-card i{
+    cursor: pointer;
 }
