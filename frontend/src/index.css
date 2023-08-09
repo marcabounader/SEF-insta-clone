@@ -7,7 +7,51 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+html , body{
+  height:100%;
+}
+
+#root, .container, .wrapper{
+  height:inherit;
+}
+
+.login{
+  height: 581.15px;
+}
+.login > div{
+  border-radius: 1px;
+  border: 1px solid grey;
+  margin-bottom:10px;
+}
+.login-form *{
+  margin: 0 40px 6px;
+  border-radius: 1px;
+  border:1px solid grey;
+}
+.login-form button{
+  background-color: rgba(0, 149, 246);
+  border:none;
+  padding:7px 16px;
+  border-radius: 8px;
+  color:white;
+}
+.insta-logo{
+  height: 175px;
+}
+
+.phone-image{
+  flex-basis: 380.32px;
+  height: 581.15px;
+}
+
+.login span{
+  color:blue;
+  cursor: pointer;
+
 }
