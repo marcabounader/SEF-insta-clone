@@ -110,6 +110,21 @@ class InstaController extends Controller
         }
     }
 
+    public function removePost($post_id){
+        try{
+            $user_id=Auth::id();
+            Post::where([['user_id', '=', $user_id],['id', '=', $post_id]])->delete();
+            return response()->json([
+                'status' => 'success'
+            ]);
+        } catch(Exception $e){
+            return response()->json([
+                'status' => 'error',
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+
     public function getFollowingPosts(){
         try{
             $user_id=Auth::id();

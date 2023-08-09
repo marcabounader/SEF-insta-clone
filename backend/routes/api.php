@@ -30,6 +30,7 @@ Route::group(["middleware" => "auth:api"], function () {
         Route::get('get-followings','getFollowings');
         Route::get('get-posts','getPosts');
         Route::post('add-post','addPost');
+        Route::delete('remove-post/{post_id}','removePost');
         Route::get('get-following-posts','getFollowingPosts');
         Route::post('like-post','likePost');
     });
