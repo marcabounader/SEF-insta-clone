@@ -98,7 +98,7 @@ class InstaController extends Controller
             $imageName = time() . '.png'; 
             file_put_contents(public_path('img/' . $imageName), $image);
             $post->image_url='http://localhost:8000/img/' . $imageName;  
-            $post->save();     
+            $post->save();
             return response()->json([
                 'status' => 'success'
             ]);
@@ -110,12 +110,20 @@ class InstaController extends Controller
         }
     }
 
-    public function getFollowingPosts($following_id){
+    public function getFollowingPosts(){
         try{
             $user_id=Auth::id();
-            $user=Following::where([['follower_id','=',$user_id],['following_id','=',$following_id]])->first();
-            if($user!=""){
-                $posts=Post::where('user_id',$following_id)->get();
+            $users=Following::where([['follower_id','=',$user_id]])->get();
+            if($users!=""){
+                foreach($users as $user){
+                    // $posts=Post::where('user_id',$following_id)->get();
+                    $old_posts=Post::where('user_id',$user->following_id)->get();
+                    if(count($old_posts)!=0){
+                        foreach($old_posts as $old_post){
+                            $posts[]=$old_post;
+                        }
+                    }
+                }
                 return response()->json([
                     'status' => 'success',
                     'posts' => $posts
