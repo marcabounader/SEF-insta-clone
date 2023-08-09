@@ -5,7 +5,7 @@ import './nav.css'
 
 // import { ReactComponent as Brand } from '../../assets/icons/logo.svg'
 
-const NavBar = ({handleOpenSearch}) => {
+const NavBar = ({handleOpenSearch, handleMyPosts,handleOpenAddModal}) => {
   return (
     <nav className="nav-container">
       <div>
@@ -14,10 +14,16 @@ const NavBar = ({handleOpenSearch}) => {
           <Logo className="insta-logo"/>
           </li>
           <li>
-          <NavLink to="/dashboard">Home</NavLink>
+          <NavLink onClick={()=>{handleMyPosts(false)}}>Home</NavLink>
           </li>
           <li>
           <NavLink onClick={handleOpenSearch}>Search</NavLink>
+          </li>
+          <li>
+          <NavLink onClick={()=>{handleMyPosts(true)}}>My Posts</NavLink>
+          </li>
+          <li>
+          <NavLink onClick={handleOpenAddModal}>My Posts</NavLink>
           </li>
         </ul>
       </div>
