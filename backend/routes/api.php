@@ -25,7 +25,7 @@ Route::controller(AuthController::class)->group(function () {
 
 Route::group(["middleware" => "auth:api"], function () {
     Route::controller(InstaController::class)->group(function () {
-        Route::get('get-user/{user}','getUser');
+        Route::get('get-user/{search}','getUser');
         Route::post('follow','follow');
         Route::get('get-followings','getFollowings');
         Route::get('get-posts','getPosts');
