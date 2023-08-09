@@ -32,6 +32,7 @@
     padding:7px 16px;
     border-radius: 8px;
     color:white;
+    cursor: pointer;
   }
   
   .login-form .register-btn{
@@ -41,4 +42,5 @@
     padding:7px 16px;
     border-radius: 8px;
     color:white;
+    cursor: pointer;
   }

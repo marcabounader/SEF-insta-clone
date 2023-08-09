@@ -46,7 +46,6 @@ const PostList = ({setPosts,posts,handlelike,myPosts}) => {
         } 
     }
     useEffect( ()=>{
-        console.log('marc');
         if(!myPosts){
             fetchPosts();
         } else {

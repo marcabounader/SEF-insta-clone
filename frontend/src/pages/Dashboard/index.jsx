@@ -4,6 +4,7 @@ import './dashboard.css'
 import axios from "axios";
 import PostList from "../../components/PostList";
 import AddPost from "../../components/AddPost";
+import { useNavigate } from "react-router-dom";
 const Dashboard = () => {
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const [search,setSearch]=useState("");
@@ -36,9 +37,11 @@ const Dashboard = () => {
     const handleSearchSubmit = async (event)=>{
         setSearch(event.target.value);
         if (event.key === "Enter") {
+
             try{
                 const response=await axios.get(`http://localhost:8000/api/get-user/${search}`,config);
                 if(response.data['status']=="success"){
+                    console.log('marc')
                     setUsers([...response.data.users])
                 }
             }catch(e){
@@ -70,10 +73,23 @@ const Dashboard = () => {
             console.log(e);
         }
     }
+    const navigate=useNavigate();
+
+    const logout = async () =>{
+        try{
+            const response=await axios.post(`http://localhost:8000/api/logout`,{},config);
+            if(response.data['status']=="success"){
+                localStorage.clear();
+                navigate('/');
+            }
+        }catch(e){
+            console.log(e);
+        }
+    }
     return ( 
         <div className="dashboard-container flex-row">
             <div className="side-container flex-row start">
-                <NavBar className='side-nav' handleOpenSearch={handleSearch} handleMyPosts={handleMyPosts} handleOpenAddModal={handleOpenAddModal}/>
+                <NavBar className='side-nav' handleOpenSearch={handleSearch} handleMyPosts={handleMyPosts} handleOpenAddModal={handleOpenAddModal} logout={logout}/>
                 {
                     isSearchOpen && <div className="search-bar flex-col align-center">
 
@@ -82,7 +98,7 @@ const Dashboard = () => {
                             {users.map((user)=>(
                                 <div className="user-card" key={user.id}>
                                     <div className="flex-row">{user.name} </div>
-                                    <div className="flex-row between">{user.username}<i id ={user.id} className="fa-solid fa-plus" onClick={handleFollowSubmit}></i></div>
+                                    <div className="flex-row between">{user.username}<i id ={user.id} className="fa-solid fa-user-plus" onClick={handleFollowSubmit}></i></div>
                                 </div>
                             ))}
                         </div>
