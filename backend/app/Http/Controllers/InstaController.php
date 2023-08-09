@@ -11,9 +11,9 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 class InstaController extends Controller
 {
-    public function getUser($user){
+    public function getUser($search){
         try{
-            $users=User::select('id','name','username')->where('username','like','%'.$user.'%')->orWhere('name','like','%'.$user.'%')->get();
+            $users=User::select('id','name','username')->where('username','like','%'.$search.'%')->orWhere('name','like','%'.$search.'%')->get();
             return response()->json([
                 'status' => 'success',
                 'users' => $users
