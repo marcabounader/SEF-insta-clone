@@ -33,7 +33,7 @@ const Login = () => {
                         <div className="login-form flex-col center">
                             <input type="text" id="email" value={email}placeholder="Email" onChange={handleCredChange}/>
                             <input type="password" id="password" value={password} placeholder="Password" onChange={handleCredChange}/>
-                            <button className="login-button" onClick={handleCredSubmit}>Log in</button>
+                            <button className="login-btn" onClick={handleCredSubmit}>Log in</button>
                         </div>
                     </div>
 

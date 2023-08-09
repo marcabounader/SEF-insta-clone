@@ -23,7 +23,7 @@ const NavBar = ({handleOpenSearch, handleMyPosts,handleOpenAddModal}) => {
           <NavLink onClick={()=>{handleMyPosts(true)}}>My Posts</NavLink>
           </li>
           <li>
-          <NavLink onClick={handleOpenAddModal}>My Posts</NavLink>
+          <NavLink onClick={handleOpenAddModal}>Add Post</NavLink>
           </li>
         </ul>
       </div>
