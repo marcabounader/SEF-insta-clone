@@ -43,7 +43,7 @@ const AddPost = ({isOpen,handleCloseAddModal}) => {
         className="modal"
         overlayClassName="overlay"
       >
-            <div className='image-container flex-col start align-center'>
+            <div className='image-container flex-col '>
               <label>Upload image:</label><br/>
               <input type="file" onChange={handleFileChange}/>
              

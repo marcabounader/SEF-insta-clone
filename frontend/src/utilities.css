@@ -47,3 +47,7 @@
 .align-center{
     align-content: center;
 }
+
+.self-center{
+    align-self: center;
+}

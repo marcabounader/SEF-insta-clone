@@ -28,6 +28,7 @@
 
 .user-card{
     margin:10px;
+    width:50%;
 }
 .user-card:hover{
     background-color: azure;

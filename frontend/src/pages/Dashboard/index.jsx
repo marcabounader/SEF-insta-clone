@@ -64,20 +64,6 @@ const Dashboard = () => {
         <div className="dashboard-container flex-row">
             <div className="side-container flex-row start">
                 <NavBar className='side-nav' handleOpenSearchModal={handleOpenSearchModal} handleMyPosts={handleMyPosts} handleOpenAddModal={handleOpenAddModal} logout={logout}/>
-                {/* {
-                    isSearchOpen && <div className="search-bar flex-col align-center">
-
-                        <input type="text" id="search" placeholder="Username or Name" onKeyUp={handleSearchSubmit}/>
-                        <div className="users flex-col between">
-                            {users.map((user)=>(
-                                <div className="user-card" key={user.id}>
-                                    <div className="flex-row">{user.name} </div>
-                                    <div className="flex-row between">{user.username}<i id ={user.id} className="fa-solid fa-user-plus" onClick={handleFollowSubmit}></i></div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                } */}
             </div>
             <SearchBar isOpen={isSearchModalOpen} handleCloseSearchModal={handleCloseSearchModal} config={config}></SearchBar>
             <AddPost isOpen={isAddModalOpen} handleCloseAddModal={handleCloseAddModal}></AddPost>

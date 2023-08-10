@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 import Modal from 'react-modal';
-
+import './search.css';
 const SearchBar = ({isOpen,handleCloseSearchModal,config}) => {
     const [users,setUsers]=useState([]);
     const [search,setSearch]=useState("");
@@ -42,16 +42,18 @@ const SearchBar = ({isOpen,handleCloseSearchModal,config}) => {
         className="modal"
         overlayClassName="overlay"
       >
-            <div className="search-bar flex-col align-center">
+            <div className="search-bar flex-col around">
 
-            <input type="text" id="search" placeholder="Username or Name" onKeyUp={handleSearchSubmit}/>
-            <div className="users flex-col between">
+            <input type="text" id="search" className="self-center" placeholder="Username or Name" onKeyUp={handleSearchSubmit}/>
+            <div className='user-container'>
+            <div className="users flex-col around">
                 {users.map((user)=>(
-                    <div className="user-card" key={user.id}>
-                        <div className="flex-row">{user.name} </div>
+                    <div className="user-card self-center" key={user.id}>
+                        <h6 className="flex-row">{user.name} </h6>
                         <div className="flex-row between">{user.username}<i id ={user.id} className="fa-solid fa-user-plus" onClick={handleFollowSubmit}></i></div>
                     </div>
                 ))}
+            </div>
             </div>
             </div>
       </Modal>    
