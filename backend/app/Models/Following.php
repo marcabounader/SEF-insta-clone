@@ -10,4 +10,9 @@ class Following extends Model
     use HasFactory;
     
     public $timestamps=false;
+
+    public function posts(): hasmany
+    {
+        return $this->hasMany(Post::class,'user_id','following_id')
+    } 
 }
