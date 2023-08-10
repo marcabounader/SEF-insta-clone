@@ -13,13 +13,13 @@
   }
   .register > div{
     border-radius: 1px;
-    border: 1px solid grey;
+    border: 1px solid #dbdbdb;
     margin-bottom:10px;
   }
   .register-form *{
     margin: 0 40px 6px;
     border-radius: 1px;
-    border:1px solid grey;
+    border:1px solid #dbdbdb;
   }
   .register-form .register-btn{
     background-color: rgba(0, 149, 246);

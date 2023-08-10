@@ -18,13 +18,13 @@
   }
   .login > div{
     border-radius: 1px;
-    border: 1px solid grey;
+    border: 1px solid #dbdbdb;
     margin-bottom:10px;
   }
   .login-form *{
     margin: 0 40px 6px;
     border-radius: 1px;
-    border:1px solid grey;
+    border:1px solid #dbdbdb;
   }
   .login-form .login-btn{
     background-color: rgba(0, 149, 246);

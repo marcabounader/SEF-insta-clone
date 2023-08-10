@@ -18,12 +18,12 @@
     width:100%;
   }
 
-  .insta-logo{
+  .nav-container .insta-logo{
     margin-left:14px;
     height:100px;
     width:auto;
   }
-  .fa-instagram{
+  .nav-container .fa-instagram{
     display:none;
     font-size:35px;
     height:35px;
@@ -69,10 +69,10 @@
   }
 
   @media(width < 580px){
-    .insta-logo{
+    .nav-container .insta-logo{
       display:none;
     }
-    .fa-instagram{
+    .nav-container .fa-instagram{
       display:block;
     }
     .nav-container{
