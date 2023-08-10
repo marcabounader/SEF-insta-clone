@@ -134,28 +134,18 @@ class InstaController extends Controller
 
     public function getFollowingPosts(){
         try{
-            $user_id=Auth::id();
-            $users=Following::where([['follower_id','=',$user_id]])->get();
-            if($users!=""){
-                foreach($users as $user){
-                    // $posts=Post::where('user_id',$following_id)->get();
-                    $old_posts=Post::where('user_id',$user->following_id)->get();
-                    if(count($old_posts)!=0){
-                        foreach($old_posts as $old_post){
-                            $posts[]=$old_post;
-                        }
-                    }
+            $user=Auth::user();
+            $user_posts=$user->followings()->with('posts')->get();
+            foreach($user_posts as $user_post){
+                if(!count($user_post->posts)==0){
+                    $new_posts[]=$user_post;
                 }
-                return response()->json([
-                    'status' => 'success',
-                    'posts' => $posts
-                ]);
-            } else{
-                return response()->json([
-                    'status' => 'error',
-                    'message' => 'unfollowed user'
-                ]);
             }
+            return response()->json([
+                'status' => 'success',
+                'posts' => $new_posts
+            ]);
+        
         }catch(Exception $e){
             return response()->json([
                 'status' => 'error',
