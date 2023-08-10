@@ -1,4 +1,4 @@
-html{
+* {
   box-sizing: border-box;
 }
 body {
@@ -24,9 +24,5 @@ html , body{
   height:inherit;
 }
 
-.insta-logo{
-  height: 175px;
-  width:auto;
-}
 
 
