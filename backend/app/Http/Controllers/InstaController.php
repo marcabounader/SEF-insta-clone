@@ -13,7 +13,7 @@ class InstaController extends Controller
 {
     public function getUser($search){
         try{
-            $users=User::select('id','name','username')->where([['username','like','%'.$search.'%'],['id','!=',Auth::id()]])->orWhere('name','like','%'.$search.'%')->get();
+            $users=User::select('id','name','username')->where([['username','like','%'.$search.'%'],['id','!=',Auth::id()]])->orWhere([['name','like','%'.$search.'%'],['id','!=',Auth::id()]])->get();
             return response()->json([
                 'status' => 'success',
                 'users' => $users
