@@ -35,12 +35,3 @@
     cursor: pointer;
   }
   
-  .login-form .register-btn{
-    background-color: rgba(0, 149, 246);
-    border:none;
-    margin:40px;
-    padding:7px 16px;
-    border-radius: 8px;
-    color:white;
-    cursor: pointer;
-  }
