@@ -2,11 +2,14 @@ import axios from 'axios';
 import { useState } from 'react';
 import Modal from 'react-modal';
 import './search.css';
+import { useNavigate } from 'react-router-dom';
 const SearchBar = ({isOpen,handleCloseSearchModal,config}) => {
     const [users,setUsers]=useState([]);
     const [search,setSearch]=useState("");
-
-
+    const navigate=useNavigate();
+    if(localStorage.getItem('token')==""){
+        navigate('/');
+    }
     const handleSearchSubmit = async (event)=>{
         setSearch(event.target.value);
         if (event.key === "Enter") {
@@ -14,7 +17,6 @@ const SearchBar = ({isOpen,handleCloseSearchModal,config}) => {
             try{
                 const response=await axios.get(`http://localhost:8000/api/get-user/${search}`,config);
                 if(response.data['status']=="success"){
-                    console.log('marc')
                     setUsers([...response.data.users])
                 }
             }catch(e){
@@ -41,6 +43,7 @@ const SearchBar = ({isOpen,handleCloseSearchModal,config}) => {
         onRequestClose={handleCloseSearchModal}
         className="modal"
         overlayClassName="overlay"
+        ariaHideApp={false}
       >
             <div className="search-bar flex-col around">
 

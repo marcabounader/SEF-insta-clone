@@ -11,13 +11,6 @@
     height:inherit;
     margin:auto;
 }
-.post{
-    align-self:center;
-    margin:10px;
-}
-.post i{
-    cursor: pointer;
-}
 .search-bar{
     height:inherit;
     width:auto;

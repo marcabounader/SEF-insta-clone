@@ -7,6 +7,11 @@ import AddPost from "../../components/AddPost";
 import { useNavigate } from "react-router-dom";
 import SearchBar from "../../components/SearchBar";
 const Dashboard = () => {
+    const navigate=useNavigate();
+
+    if(localStorage.getItem('token')==""){
+        navigate('/');
+    }
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const [posts,setPosts]=useState([]);
     const [myPosts,setMyPosts]=useState(false);
@@ -16,13 +21,6 @@ const Dashboard = () => {
     const [isSearchModalOpen, setIsSearchModalOpen] = useState(false)
     const handleOpenSearchModal = () => setIsSearchModalOpen(true)
     const handleCloseSearchModal = () => setIsSearchModalOpen(false)
-    // const handleSearch = () =>{
-    //     if(isSearchOpen){
-    //         setIsSearchOpen(false)
-    //     } else{
-    //         setIsSearchOpen(true)
-    //     }
-    // }
 
     const handleMyPosts = (myPost) =>{
         if(myPost){
@@ -47,7 +45,6 @@ const Dashboard = () => {
             console.log(e);
         }
     }
-    const navigate=useNavigate();
 
     const logout = async () =>{
         try{
@@ -62,12 +59,10 @@ const Dashboard = () => {
     }
     return ( 
         <div className="dashboard-container flex-row">
-            <div className="side-container flex-row start">
-                <NavBar className='side-nav' handleOpenSearchModal={handleOpenSearchModal} handleMyPosts={handleMyPosts} handleOpenAddModal={handleOpenAddModal} logout={logout}/>
-            </div>
+            <NavBar className='side-nav' handleOpenSearchModal={handleOpenSearchModal} handleMyPosts={handleMyPosts} handleOpenAddModal={handleOpenAddModal} logout={logout}/>
             <SearchBar isOpen={isSearchModalOpen} handleCloseSearchModal={handleCloseSearchModal} config={config}></SearchBar>
             <AddPost isOpen={isAddModalOpen} handleCloseAddModal={handleCloseAddModal}></AddPost>
-            <div className="post-container flex-col">
+            <div className="post-container flex-row center">
                 <PostList setPosts={setPosts} posts={posts} handlelike={handlelike} myPosts={myPosts}/>
             </div>
         </div>

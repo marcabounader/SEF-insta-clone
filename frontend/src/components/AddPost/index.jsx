@@ -2,15 +2,18 @@ import Modal from 'react-modal';
 import axios from 'axios';
 import { useState } from 'react';
 import './add.css';
+import { useNavigate } from 'react-router-dom';
 
 const AddPost = ({isOpen,handleCloseAddModal}) => {
   // const [file,setFile]=useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
-
+  const navigate=useNavigate();
+  if(localStorage.getItem('token')==""){
+    navigate('/');
+}
   const config={
     headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}
   };
-
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -27,8 +30,7 @@ const AddPost = ({isOpen,handleCloseAddModal}) => {
         try{
           const response=await axios.post(`http://localhost:8000/api/add-post/`,{image:selectedFile},config);
           if(response.data['status']=="success"){
-              // setPosts([...response.data.posts]);
-              console.log(response.data);
+            handleCloseAddModal();
           }
         }catch(e){
             console.log(e);
@@ -42,6 +44,7 @@ const AddPost = ({isOpen,handleCloseAddModal}) => {
         onRequestClose={handleCloseAddModal}
         className="modal"
         overlayClassName="overlay"
+        ariaHideApp={false}
       >
             <div className='image-container flex-col '>
               <label>Upload image:</label><br/>

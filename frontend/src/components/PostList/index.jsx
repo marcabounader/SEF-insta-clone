@@ -1,11 +1,17 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-
+import { useNavigate } from "react-router-dom";
+import './post.css';
 const PostList = ({setPosts,posts,handlelike,myPosts}) => {
     const [followingPosts,setFollowingPosts]=useState([]);
+    const navigate=useNavigate();
+    if(localStorage.getItem('token')==""){
+        navigate('/');
+    }
     const config={
         headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}
     };
+    
     const fetchPosts = async ()=>{
             try{
                 const response=await axios.get(`http://localhost:8000/api/get-following-posts/`,config);
@@ -13,10 +19,6 @@ const PostList = ({setPosts,posts,handlelike,myPosts}) => {
                 if(response.data['status']=="success"){
                     const data=response.data.posts;
                     data.forEach(user => {
-                        // if(!user.posts==0){
-                        //     setFollowingPosts([...user]);
-                        // }
-
                         const posts=user.posts;
                         for (let post in posts) {
                             let username=user.username;
@@ -25,7 +27,7 @@ const PostList = ({setPosts,posts,handlelike,myPosts}) => {
                         }
                     });
                     setFollowingPosts([...new_posts]);
-                }
+                }  
 
             }catch(e){
                 console.log(e);
@@ -38,7 +40,7 @@ const PostList = ({setPosts,posts,handlelike,myPosts}) => {
             const response=await axios.get(`http://localhost:8000/api/get-posts/`,config);
             if(response.data['status']=="success"){
                 setPosts([...response.data.posts]);
-            }
+            } 
 
         }catch(e){
             console.log(e);
@@ -69,24 +71,23 @@ const PostList = ({setPosts,posts,handlelike,myPosts}) => {
     },[myPosts]);
 
     return ( 
-        <>
+        <div className="posts">
         {myPosts ? posts.map((post)=>(
-            <div className="post flex-col" key={post.id}>
+            <div className="post" key={post.id}>
                 <img src={post.image_url}/>
                 <div>{post.likes} likes <i className="fa-solid fa-trash" id={post.id} onClick={handleDeletePost}></i></div>
             </div>
         )): 
         !myPosts && followingPosts.map((post)=>(
-            <div className="post flex-col" key={post.id}>
+            <div className="post" key={post.id}>
                 <h6>{post.username}</h6>
                 <img src={post.image_url}/>
-                <i className="fa-regular fa-heart" onClick={() => {handlelike(post.id,post.user_id)}}></i>
-                <div>{post.likes} likes </div>
+                <div><i className="fa-regular fa-heart" onClick={() => {handlelike(post.id,post.user_id)}}></i> {post.likes} likes </div>
             </div>
         ))
         }
 
-        </>
+        </div>
 
 
      );

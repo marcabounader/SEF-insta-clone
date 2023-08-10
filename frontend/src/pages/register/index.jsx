@@ -35,6 +35,10 @@ const Register = () => {
                             <button className="register-btn" onClick={handleDataSubmit}>Sign up</button>
                         </div>
                     </div>
+                    
+                    <div className="flex-row center">
+                        <p>Go to <span className="sign-up" onClick={() => navigate('/')}>Sign in</span></p>
+                    </div>
             </div>
     </div> );
 }
