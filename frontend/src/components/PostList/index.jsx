@@ -1,17 +1,30 @@
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const PostList = ({setPosts,posts,handlelike,myPosts}) => {
-
+    const [followingPosts,setFollowingPosts]=useState([]);
     const config={
         headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}
     };
     const fetchPosts = async ()=>{
             try{
                 const response=await axios.get(`http://localhost:8000/api/get-following-posts/`,config);
+                let new_posts=[];
                 if(response.data['status']=="success"){
-                    setPosts([...response.data.posts]);
+                    const data=response.data.posts;
+                    data.forEach(user => {
+                        // if(!user.posts==0){
+                        //     setFollowingPosts([...user]);
+                        // }
 
+                        const posts=user.posts;
+                        for (let post in posts) {
+                            let username=user.username;
+                            let user_post={username:username,...posts[post]};
+                            new_posts.push(user_post);
+                        }
+                    });
+                    setFollowingPosts([...new_posts]);
                 }
 
             }catch(e){
@@ -48,20 +61,31 @@ const PostList = ({setPosts,posts,handlelike,myPosts}) => {
     useEffect( ()=>{
         if(!myPosts){
             fetchPosts();
+
         } else {
             fetchMyPosts();
+
         }
     },[myPosts]);
 
     return ( 
         <>
-        {posts.map((post)=>(
+        {myPosts ? posts.map((post)=>(
             <div className="post flex-col" key={post.id}>
                 <img src={post.image_url}/>
-                {!myPosts && <i className="fa-regular fa-heart" onClick={() => {handlelike(post.id,post.user_id)}}></i>}
-                <div>{post.likes} likes {myPosts && <i className="fa-solid fa-trash" id={post.id} onClick={handleDeletePost}></i>}</div>
+                <div>{post.likes} likes <i className="fa-solid fa-trash" id={post.id} onClick={handleDeletePost}></i></div>
             </div>
-        ))}
+        )): 
+        !myPosts && followingPosts.map((post)=>(
+            <div className="post flex-col" key={post.id}>
+                <h6>{post.username}</h6>
+                <img src={post.image_url}/>
+                <i className="fa-regular fa-heart" onClick={() => {handlelike(post.id,post.user_id)}}></i>
+                <div>{post.likes} likes </div>
+            </div>
+        ))
+        }
+
         </>
 
 
