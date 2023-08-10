@@ -6,19 +6,33 @@
     display:flex;
     flex-direction:column;
     align-items: flex-start;
-    border-right:1px solid black;
+    border-right:1px solid #dbdbdb;
     height:inherit;
     width:250px;
     transition:0.3s;
+    padding: 40px 10px 30px 10px;
   }
  
-  .nav-container .insta-logo{
-    height: 175px;
+  .sidebar-header{
+    margin-bottom: 44px;
+    width:100%;
+  }
+
+  .insta-logo{
+    margin-left:14px;
+    height:100px;
     width:auto;
+  }
+  .fa-instagram{
+    display:none;
+    font-size:35px;
+    height:35px;
+    width:51px;
+    text-align: center;
   }
 
   .nav-container button{
-    color: black;
+    color: inherit;
     position:relative;
     border:none;
     cursor: pointer;
@@ -50,5 +64,37 @@
     scale: 1.05;
   }
 
-  
-  
+  .nav-container button > span > span {
+    transition: 0.3s;
+  }
+
+  @media(width < 580px){
+    .insta-logo{
+      display:none;
+    }
+    .fa-instagram{
+      display:block;
+    }
+    .nav-container{
+      width:72px;
+    }
+    .nav-container button > span {
+      width:50px
+    }
+    .nav-container button > span > span {
+      opacity: 0;
+      visibility: none;
+    }
+  }
+
+  .nav-container button i{
+    position: relative;
+    font-size:28px;
+    transition: 0.2s;
+  }
+
+
+  .nav-container button span{
+   font-size:17px;
+
+  }

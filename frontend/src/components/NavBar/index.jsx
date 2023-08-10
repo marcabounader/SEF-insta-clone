@@ -5,42 +5,49 @@ import './nav.css'
 
 // import { ReactComponent as Brand } from '../../assets/icons/logo.svg'
 
-const NavBar = ({handleOpenSearch, handleMyPosts,handleOpenAddModal,logout}) => {
+const NavBar = ({handleOpenSearchModal, handleMyPosts,handleOpenAddModal,logout}) => {
   return (
-    <nav className="nav-container flex-col">
-          <Logo className="insta-logo"/>
-          <div className='nav-subcontainer flex-col between'>
+    <aside className="nav-container flex-col">
+          <header className="sidebar-header">
+            <Logo className="insta-logo"/>
+            <i className="fa-brands fa-instagram"></i>
+          </header>
+          <nav>
             <button onClick={()=>{handleMyPosts(false)}}>
                 <span>
-                  <i class="fa-solid fa-house"></i>
+                  <i className="fa-solid fa-house"></i>
                   <span>Home</span>
                 </span>
               </button>
 
-              <button onClick={handleOpenSearch}>
+              <button onClick={handleOpenSearchModal}>
                 <span>
-                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <i className="fa-solid fa-magnifying-glass"></i>
                     <span>Search</span>
                   </span>
               </button>
             <button onClick={handleOpenAddModal}>
               <span>
-                <i class="fa-solid fa-square-plus"></i>
+                <i className="fa-solid fa-square-plus"></i>
                 <span>Add Post</span>
               </span>
             </button>
 
             <button onClick={()=>{handleMyPosts(true)}}>
               <span>
-                <i class="fa-solid fa-user"></i>
+                <i className="fa-solid fa-user"></i>
                 <span>Profile</span>
               </span>
             </button>
-            <i className="fa-solid fa-right-from-bracket" onClick={logout}></i>
 
-          </div>
-
-    </nav>
+            <button onClick={logout}>
+              <span>
+                <i className="fa-solid fa-right-from-bracket"></i>
+                <span>Logout</span>
+              </span>
+            </button>
+          </nav>
+    </aside>
   )
 }
 export default NavBar
